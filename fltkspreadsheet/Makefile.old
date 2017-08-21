@@ -1,0 +1,26 @@
+
+FLTKDIR=/usr/local/lib
+
+# HANDLE INCLUDING OS SPECIFIC MAKEFILE
+OS=$(shell uname | tr a-z A-Z | sed 's/_.*//')
+include Makefile.LINUX
+
+MYFILE=sprsht
+BINS= $(MYFILE)$
+
+
+all: $(BINS)
+
+clean:
+
+# For quickie tests  add -O3 for optimisation
+$(MYFILE): $(MYFILE).cxx $(OBJS)
+	$(CC) $(CFLAGS) -I$(FLTKDIR)  -I/usr/local/include/FL/images $(MYFILE).cxx -o  $(MYFILE) $(OBJS) $(FLTKLIBS)
+	$(REZCOMMAND) $(MYFILE) -lmine
+
+tar: FORCE
+	make clean
+
+# DON'T REMOVE
+FORCE:
+

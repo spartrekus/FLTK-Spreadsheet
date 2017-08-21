@@ -1,0 +1,8 @@
+#!/bin/bash
+echo optimise level is $1
+echo g++ $1 -g -Wall -I. -DLINUX=1   -I/usr/local/lib  -I/usr/local/include/FL/images sprsht.cxx -o  sprsht  -L/usr/local/lib/lib -lfltk -L/usr/X11R6/lib -lXtst -lXft -lX11 -lXext  -lm
+g++ $1 -g -Wall -I. -DLINUX=1   -I/usr/local/lib sprsht.cxx -o  sprsht  -L/usr/local/lib/lib -lfltk -L/usr/X11R6/lib -lXtst -lXft -lX11 -lXext  -lm 
+
+echo finished : run sprsht
+# optionally reduce size of executable
+echo  run strip -s sprsht to reduce size of executable
